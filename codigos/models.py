@@ -1,48 +1,30 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.orm import relationship, declarative_base
+from typing import List, Optional
+from pydantic import BaseModel
 
-Base = declarative_base()
+class Categoria(BaseModel):
+    cat_id: int
+    cat_nome: str
 
-class Categoria(Base):
-    __tablename__ = 'tb_categorias'
-    
-    cat_id = Column(Integer, primary_key=True, autoincrement=True)
-    cat_nome = Column(String(255), nullable=False, unique=True)
-    
-    produtos = relationship("Produto", back_populates="categoria")
+class Fornecedor(BaseModel):
+    for_id: int
+    for_nome: str
+    for_telefone: str
+    for_email: str
 
-
-class Fornecedor(Base):
-    __tablename__ = 'tb_fornecedores'
-    
-    for_id = Column(Integer, primary_key=True, autoincrement=True)
-    for_nome = Column(String(255), nullable=False)
-    for_telefone = Column(String(255), nullable=False)
-    for_email = Column(String(255), nullable=False)
-    
-    produtos = relationship("Produto", back_populates="fornecedor")
+class Produto(BaseModel):
+    pro_id: int
+    pro_nome: str
+    pro_descricao: str
+    pro_quantidade: int
+    pro_unidade: str
+    pro_cat_id: int
+    pro_for_id: int
 
 
-class Produto(Base):
-    __tablename__ = 'tb_produtos'
-    
-    pro_id = Column(Integer, primary_key=True, autoincrement=True)
-    pro_nome = Column(String(255), nullable=False)
-    pro_descricao = Column(String(255), nullable=False)
-    pro_quantidade = Column(Integer, nullable=False)
-    pro_unidade = Column(String(255), nullable=False)
-    pro_cat_id = Column(Integer, ForeignKey('tb_categorias.cat_id'))
-    pro_for_id = Column(Integer, ForeignKey('tb_fornecedores.for_id'))
-    
-    categoria = relationship("Categoria", back_populates="produtos")
-    fornecedor = relationship("Fornecedor", back_populates="produtos")
+class Usuario(BaseModel):
+    usu_id: int
+    usu_nome: str
+    usu_email: str
+    usu_senha: str
+    usu_tipo: str
 
-
-class Usuario(Base):
-    __tablename__ = 'tb_usuarios'
-    
-    usu_id = Column(Integer, primary_key=True, autoincrement=True)
-    usu_nome = Column(String(255), nullable=False)
-    usu_email = Column(String(255), nullable=False)
-    usu_senha = Column(String(255), nullable=False)
-    usu_tipo = Column(String(255), nullable=False)
