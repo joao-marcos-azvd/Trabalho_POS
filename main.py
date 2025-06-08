@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Depends
 from models import Categoria, Fornecedor, Produto, Usuario
+TESTANDO!
 
 app = FastAPI()
 
