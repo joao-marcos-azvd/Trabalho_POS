@@ -111,6 +111,3 @@ def deletar_fornecedor(for_nome: str):
             fornecedores.pop(i)
             return {"mensagem": "Fornecedor deletado com sucesso"}
     return {"erro": "Fornecedor não encontrado"}
-
-
-
