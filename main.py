@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Depends, HTTPException
-from sqlmodel import Session, select
+from sqlmodel import Session, select, SQLModel
 from models import Categoria, Fornecedor, Produto, Usuario
 from database import get_session, engine
 
