@@ -4,6 +4,7 @@
 - Python
 - FastAPI
 - Uvicorn
+- SQLModel
 
 **Descrição :** 
 
@@ -31,21 +32,17 @@ Em suma, a implementação de um sistema como este nos leva a redução de custo
 
 
 ### 2.1 Funcionalidades Principais
-- **Funcionalidade 01** : Gerenciamento de Usuários
+- **Gerenciamento de Usuários**  
+  Permite criar, listar, atualizar e deletar usuários com os campos: nome, email, senha e tipo.
 
- Permite criar, listar, atualizar e deletar usuários do sistema, com base no nome. Essa funcionalidade é essencial para controlar quem pode utilizar ou gerenciar o sistema de estoque.
+- **Gerenciamento de Categorias**  
+  Permite cadastrar, consultar, atualizar e excluir categorias que agrupam os produtos no estoque.
 
-- **Funcionalidade 02** : Gerenciamento de Categorias
+- **Gerenciamento de Produtos**  
+  Possibilita o cadastro, listagem, edição e exclusão de produtos com os campos: nome, descrição, quantidade, unidade, e associações com categoria e fornecedor.
 
-Permite o cadastro, consulta, atualização e remoção de categorias de produtos. As categorias ajudam na organização do estoque, agrupando produtos com características semelhantes.
-
-- **Funcionalidade 03** : Gerenciamento de Produtos
- 
- Oferece funcionalidades para cadastrar, listar, editar e excluir produtos no estoque. Isso garante o controle sobre quais itens estão disponíveis, facilitando o monitoramento de entrada e saída.
-
-- **Funcionalidade 04** :  Gerenciamento de Fornecedores
-
-Permite manter um registro dos fornecedores, incluindo criação, listagem, edição e remoção. Isso ajuda a empresa a manter controle sobre quem fornece os produtos armazenados.
+- **Gerenciamento de Fornecedores**  
+  Permite manter um registro com nome, telefone e email dos fornecedores, além das operações de CRUD.
 
 ### 2.2 Arquitetura do Código
     main/
@@ -60,9 +57,10 @@ Traçamos os limites do que o sistema fará ou não, listando as funcionalidades
 Desenvolveu-se os modelos UML do projeto. Diagrama de classe descreve a estrutura estática do sistema, mostrando objetos, seus atributos e como se relacionam. Diagrama de caso de uso foca na interação entre o usuário e o sistema. Diagrama de atividade ilustra o fluxo de trabalho ou o processo de execução. Por fim, o diagrama de sequência detalha a ordem e a interação das mensagens entre os objetos em um cenário específico.
 
 ### Etapa 03: Definição de modelo de banco de dados
-Para construir nosso sistema de gerenciamento de estoque, definimos a estrutura do banco de dados. Estabelecemos tabelas fundamentais: tb_categorias e tb_fornecedores para organizar informações básicas. tb_produtos relaciona os itens às categorias e fornecedores. Adicionamos tb_usuarios para controle de acesso e, para um sistema mais completo, tb_movimentacoes para registrar todas as entradas e saídas.
+Para construir nosso sistema de gerenciamento de estoque, definimos a estrutura do banco de dados utlizando SQLModel. Estabelecemos tabelas fundamentais: tb_categorias e tb_fornecedores para organizar informações básicas. tb_produtos relaciona os itens às categorias e fornecedores. Adicionamos tb_usuarios para controle de acesso e, para um sistema mais completo, tb_movimentacoes para registrar todas as entradas e saídas.
 
-**Observação**: *A definição do banco foi feita na branche Test do nosso repositório no GitHub.*
+Observação: A definição do banco foi feita na branch Test do nosso repositório no GitHub.
+
 
 ### Etapa 04: Implementação dos endpoints
 Na primeira parte da implementação dos endpoints do nosso sistema, definimos rotas claras para cada funcionalidade, como /produtos para listar itens ou /produtos/{pro_nome} para atualizar seus dados. Usamos métodos HTTP (GET para buscar, POST para criar, PUT para atualizar, DELETE para remover) para cada interação. 
