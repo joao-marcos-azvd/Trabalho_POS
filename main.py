@@ -5,6 +5,8 @@ from database import engine, get_session
 from sqlmodel import Session
 from passlib.hash import bcrypt
 
+#pip install fastapi uvicorn sqlmodel passlib[bcrypt] email-validator requests
+
 import models
 from models import (
     Usuario, UsuarioCreate, UsuarioRead, UsuarioUpdate,
