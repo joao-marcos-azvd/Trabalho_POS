@@ -5,6 +5,7 @@
 - FastAPI
 - Uvicorn
 - SQLModel
+- Passlib (hash de senhas)
 
 **Descrição :** 
 
@@ -46,8 +47,10 @@ Em suma, a implementação de um sistema como este nos leva a redução de custo
 
 ### 2.2 Arquitetura do Código
     main/
-    ├── main.py            # Ponto de entrada (inicialização)
-    ├── models.py          # Modelos com Pydantic
+    ├── consumer.py            
+    ├── database.py          
+    ├── main.py  
+    ├── models.py  
 
 ## 3. Etapas de Entrega (Cronograma Detalhado)
 ### Etapa 01: Definição do escopo do projeto
